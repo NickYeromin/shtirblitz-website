@@ -24,7 +24,10 @@ const P = ([
 export default function RevolverShells({ src = ROLL_IMG, className, interval = 450, spin = true }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
   const spinRef = useRef(spin);
-  spinRef.current = spin;
+
+  useEffect(() => {
+    spinRef.current = spin;
+  }, [spin]);
 
   useEffect(() => {
     const cv = ref.current!;
