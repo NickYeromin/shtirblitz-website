@@ -1,23 +1,28 @@
 # Shtirblitz
 
-Next.js App Router, React и TypeScript. Интерфейс — MUI, иконки — `lucide-react`.
+Next.js App Router, React, and TypeScript. The UI uses MUI, and icons come from `lucide-react`.
 
-## Запуск
+## Public Access
+
+- Website: [https://shtirblitz.duckdns.org/](https://shtirblitz.duckdns.org/)
+- API: [https://shtirblitz.duckdns.org/api/](https://shtirblitz.duckdns.org/api/)
+
+## Getting Started
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Сайт доступен по адресу http://localhost:3000.
+The site is available at http://localhost:3000.
 
-## Стандарт компонентов
+## Component Guidelines
 
-Все стили описываются внутри компонентов через MUI `sx`, анимации — через MUI `keyframes`. Отдельных CSS-файлов нет. Общие шрифты и базовые стили находятся в `src/components/AppProviders.tsx` через `ThemeProvider` и `CssBaseline`.
+All styles are defined within components using MUI `sx`, and animations use MUI `keyframes`. There are no separate CSS files. Shared fonts and base styles are defined in `src/components/AppProviders.tsx` through `ThemeProvider` and `CssBaseline`.
 
-Правила для дальнейшей разработки: [AGENTS.md](./AGENTS.md).
+Guidelines for further development: [AGENTS.md](./AGENTS.md).
 
-## Проверки
+## Checks
 
 ```bash
 npm run lint

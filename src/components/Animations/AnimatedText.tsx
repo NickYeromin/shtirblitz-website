@@ -24,9 +24,9 @@ const textSx = {
 
 export interface AnimatedTextProps {
   texts: string[];
-  /** Время показа каждой надписи, мс. */
+  /** Display time for each text in milliseconds. */
   holdMs?: number;
-  /** Длительность появления и ухода, мс. */
+  /** Entrance and exit duration in milliseconds. */
   durationMs?: number;
   sx?: SxProps<Theme>;
 }
@@ -70,7 +70,7 @@ export default function AnimatedText({
         ...(Array.isArray(sx) ? sx : [sx]),
       ]}
     >
-      {/* Все варианты задают размер, чтобы страница не прыгала при смене текста. */}
+      {/* All text variants contribute to the size to prevent layout shifts when the text changes. */}
       {texts.map((text, i) => (
         <Box
           component="span"

@@ -7,27 +7,27 @@ import { Box, type SxProps, type Theme } from "@mui/material";
 type ImageSrc = string | StaticImageData;
 
 export interface CardDeckProps {
-  /** Рубашка карты (одна картинка для всей колоды) */
+  /** Card back (one image for the entire deck). */
   back: ImageSrc;
-  /** Лицевые стороны. Карта №i получает faces[i % faces.length] */
+  /** Card faces. Card i uses faces[i % faces.length]. */
   faces: ImageSrc[];
-  /** Сколько карт в колоде. По умолчанию — не меньше 8 и не меньше числа лиц */
+  /** Number of cards in the deck. Defaults to at least 8 and at least the number of faces. */
   cardCount?: number;
-  /** Ширина карты: число = px, строка = любое CSS-значение, напр. "clamp(160px, 30vw, 260px)" */
+  /** Card width: a number in pixels or any CSS value, e.g. "clamp(160px, 30vw, 260px)". */
   cardWidth?: number | string;
-  /** Соотношение ширина / высота. 2/3 для карт 1024×1536 */
+  /** Width-to-height ratio. Use 2/3 for 1024×1536 cards. */
   aspectRatio?: number;
-  /** Длительность переворота, мс */
+  /** Flip duration in milliseconds. */
   flipDurationMs?: number;
-  /** Сколько карта лежит лицом вверх после переворота, мс */
+  /** Time the card stays face up after flipping, in milliseconds. */
   holdMs?: number;
-  /** Пауза после полного возвращения карты в стопку, мс */
+  /** Pause after the card has fully returned to the stack, in milliseconds. */
   pauseMs?: number;
-  /** sequential — сверху вниз по колоде, random — случайная карта */
+  /** sequential: top to bottom through the deck; random: a random card. */
   order?: "sequential" | "random";
-  /** Раскладка: vertical — стопка вверх, horizontal — веер */
+  /** Layout: vertical stacks cards upward; horizontal fans them out. */
   direction?: "vertical" | "horizontal";
-  /** Alt-текст для лицевых сторон (по индексу faces) */
+  /** Alt text for card faces (indexed to match faces). */
   faceAlts?: string[];
   sx?: SxProps<Theme>;
 }
@@ -54,7 +54,7 @@ export default function CardDeck({
     if (count === 0) return;
 
     let timer: ReturnType<typeof setTimeout>;
-    // последняя карта в DOM лежит сверху колоды — начинаем с неё
+    // The last card in the DOM is on top of the deck, so start with it.
     let current = count;
 
     const pickNext = () => {
