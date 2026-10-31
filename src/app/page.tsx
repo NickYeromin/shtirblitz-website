@@ -19,8 +19,11 @@ export default function Home() {
   return (
     <Box
       component="main"
-      className="home-viewport"
       sx={{
+        position: "relative",
+        width: "100%",
+        height: "100dvh",
+        overflow: "hidden",
         backgroundColor: colors.blue[300],
         backgroundImage: 'url("/images/diagmonds.png")',
         backgroundRepeat: "repeat",
@@ -29,8 +32,10 @@ export default function Home() {
     >
       <BackgroundMusic />
       <Box
-        className="home-content"
         sx={{
+          width: "100%",
+          height: "100%",
+          minHeight: "1082px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-around",

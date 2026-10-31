@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { Box } from "@mui/material";
 
 export default function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -34,7 +35,8 @@ export default function BackgroundMusic() {
   }, []);
 
   return (
-    <audio
+    <Box
+      component="audio"
       ref={audioRef}
       src="/images/audio/bg-loop.mp3"
       loop

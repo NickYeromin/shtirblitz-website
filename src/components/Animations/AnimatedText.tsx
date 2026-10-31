@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { Box } from '@mui/material';
-import { keyframes } from '@mui/material/styles';
-import { visuallyHidden } from '@mui/utils';
-import { useEffect, useState } from 'react';
+import { Box, type SxProps, type Theme } from "@mui/material";
+import { keyframes } from "@mui/material/styles";
+import { visuallyHidden } from "@mui/utils";
+import { useEffect, useState } from "react";
 
 const appear = keyframes`
   from { opacity: 0; transform: translateY(100%); }
@@ -16,10 +16,10 @@ const disappear = keyframes`
 `;
 
 const textSx = {
-  gridArea: '1 / 1',
-  alignSelf: 'center',
-  whiteSpace: 'pre-wrap',
-  overflowWrap: 'anywhere',
+  gridArea: "1 / 1",
+  alignSelf: "center",
+  whiteSpace: "pre-wrap",
+  overflowWrap: "anywhere",
 } as const;
 
 export interface AnimatedTextProps {
@@ -28,14 +28,14 @@ export interface AnimatedTextProps {
   holdMs?: number;
   /** Длительность появления и ухода, мс. */
   durationMs?: number;
-  className?: string;
+  sx?: SxProps<Theme>;
 }
 
 export default function AnimatedText({
   texts,
   holdMs = 2200,
   durationMs = 500,
-  className,
+  sx = [],
 }: AnimatedTextProps) {
   const [step, setStep] = useState({ index: 0, leaving: false });
   const duration = Math.max(0, durationMs);
@@ -59,21 +59,23 @@ export default function AnimatedText({
   return (
     <Box
       component="span"
-      className={className}
-      sx={{
-        display: 'inline-grid',
-        overflow: 'hidden',
-        verticalAlign: 'middle',
-        textAlign: 'center',
-        lineHeight: 1.4,
-      }}
+      sx={[
+        {
+          display: "inline-grid",
+          overflow: "hidden",
+          verticalAlign: "middle",
+          textAlign: "center",
+          lineHeight: 1.4,
+        },
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
     >
       {/* Все варианты задают размер, чтобы страница не прыгала при смене текста. */}
       {texts.map((text, i) => (
         <Box
           component="span"
           key={i}
-          sx={{ ...textSx, visibility: 'hidden' }}
+          sx={{ ...textSx, visibility: "hidden" }}
           aria-hidden="true"
         >
           {text}

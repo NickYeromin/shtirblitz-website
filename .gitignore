@@ -23,6 +23,9 @@
 # misc
 .DS_Store
 *.pem
+AGENTS.md
+load-test.js
+report.html
 
 # debug
 npm-debug.log*
